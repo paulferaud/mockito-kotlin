@@ -203,13 +203,12 @@ class KArgumentCaptor<out T : Any?>(
         // In Kotlin, we have to create `[null]` explicitly.
         // This code-path is applied for non-vararg array arguments as well, but it seems to work fine.
         return captor.capture() ?: if (tClass.java.isArray) {
-            singleElementArray()
+            // Single element array
+            Array.newInstance(tClass.java.componentType!!, 1)
         } else {
             createInstance(tClass)
         } as T
     }
-
-    private fun singleElementArray(): Any? = Array.newInstance(tClass.java.componentType, 1)
 }
 
 val <T> ArgumentCaptor<T>.firstValue: T

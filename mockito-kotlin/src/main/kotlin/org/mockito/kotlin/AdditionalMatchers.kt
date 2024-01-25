@@ -150,7 +150,7 @@ inline fun <reified T : Any> not(matcher: T): T {
  * less than the given delta details.
  */
 fun eq(value: Double, delta: Double): Double {
-    return AdditionalMatchers.eq(value, delta) ?: 0.0
+    return AdditionalMatchers.eq(value, delta)
 }
 
 /**
@@ -158,5 +158,5 @@ fun eq(value: Double, delta: Double): Double {
  * is less than the given delta details.
  */
 fun eq(value: Float, delta: Float): Float {
-    return AdditionalMatchers.eq(value, delta) ?: 0.0f
+    return AdditionalMatchers.eq(value, delta)
 }

@@ -59,7 +59,7 @@ fun <T : Any> anyVararg(clazz: KClass<T>): T {
     return ArgumentMatchers.argThat(VarargMatcher(clazz.java)) ?: createInstance(clazz)
 }
 
-private class VarargMatcher<T>(private val clazz: Class<T>) : ArgumentMatcher<T> {
+private class VarargMatcher<T: Any>(private val clazz: Class<T>) : ArgumentMatcher<T> {
     override fun matches(t: T): Boolean = true
 
     // In Java >= 12 you can do clazz.arrayClass()
